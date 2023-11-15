@@ -45,7 +45,7 @@ display.show(Image.HAPPY)
 # loop
 while True:
     if button_a.is_pressed():
-        # turn servo 0 deegres
+        # turn servo 0 degrees
         Servo(pin14).write_angle(0)
         display.clear()
         display.show("0")
@@ -54,7 +54,7 @@ while True:
         sleep(1000)
 
     if button_b.is_pressed():
-        # turn servo 180 deegres
+        # turn servo 180 degrees
         Servo(pin14).write_angle(180)
         display.clear()
         display.show("180")
