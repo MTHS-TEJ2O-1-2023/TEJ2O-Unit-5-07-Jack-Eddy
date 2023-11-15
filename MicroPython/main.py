@@ -5,10 +5,12 @@ This module is a Micro:bit MicroPython program
 """
 
 from microbit import *
-import math
 from math import *
 
 
+# SparkFun Electronics
+# Experiment 8.0
+# Using a servo motor
 class Servo:
     def __init__(self, pin, freq=50, min_us=600, max_us=2400, angle=180):
         self.min_us = min_us
@@ -25,7 +27,7 @@ class Servo:
         us = min(self.max_us, max(self.min_us, us))
         duty = round(us * 1024 * self.freq // 1000000)
         self.pin.write_analog(duty)
-        sleep(100)
+        sleep(1000)
         self.pin.write_digital(0)  # turn the pin off
 
     def write_angle(self, degrees=None):
@@ -37,28 +39,27 @@ class Servo:
         self.write_us(us)
 
 
-# set up
-display.clear()
+# setup
 display.show(Image.HAPPY)
 
-Servo(pin0).write_angle(0)
-
+# loop
 while True:
-    # go to 0 degrees
     if button_a.is_pressed():
-        Servo(pin0).write_angle(0)
+        # turn servo 0 deegres
+        Servo(pin14).write_angle(0)
         display.clear()
-        display.scroll("0")
+        display.show("0")
+        sleep(1000)
         display.show(Image.SQUARE_SMALL)
-        # end of turn
-        display.clear()
-        display.show(Image.HAPPY)
-    # go to 180 degrees
+        sleep(1000)
+
     if button_b.is_pressed():
-        Servo(pin0).write_angle(0)
+        # turn servo 180 deegres
+        Servo(pin14).write_angle(180)
         display.clear()
-        display.scroll("180")
+        display.show("180")
+        sleep(1000)
         display.show(Image.SQUARE_SMALL)
-        # end of turn
-        display.clear()
-        display.show(Image.HAPPY)
+        sleep(1000)
+    display.clear()
+    display.show(Image.HAPPY)
